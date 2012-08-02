@@ -2,13 +2,58 @@
 
 ## [v0.2](https://github.com/cucumber/cucumber-js/compare/v0.1.5...master)
 
-### [master (unreleased)](https://github.com/cucumber/cucumber-js/compare/v0.2.15...master)
+### [master (unreleased)](https://github.com/cucumber/cucumber-js/compare/v0.2.18...master)
 
 **TBD**
 
 
-### [v0.2.15](https://github.com/cucumber/cucumber-js/compare/v0.2.14...v0.2.15)
 
+### [v0.2.18](https://github.com/cucumber/cucumber-js/compare/v0.2.17...v0.2.18)
+
+#### Fixes
+
+* Replace findit with walkdir to fix file loading on Windows (#73) (Aaron Garvey)
+
+#### Documentation, internals and tests
+
+* Rename spec file (Julien Biezemans)
+* Extract developer documentation from README to CONTRIBUTE (Julien Biezemans)
+* Bump browserify (Julien Biezemans)
+* Update supported Node.js versions (Julien Biezemans)
+
+
+
+### [v0.2.17](https://github.com/cucumber/cucumber-js/compare/v0.2.16...v0.2.17)
+
+#### New features
+
+* Add pretty formatter (simplified, monochrome) (#59) (@renier, Julien Biezemans)
+
+#### Documentation, internals and tests
+
+* Display only master branch build status in README (Julien Biezemans)
+* Rename "summary logger" to "summarizer" (#59) (Julien Biezemans)
+* Extract common formatter methods (#59, #63) (Julien Biezemans)
+
+
+
+### [v0.2.16](https://github.com/cucumber/cucumber-js/compare/v0.2.15...v0.2.16)
+
+#### New features
+
+* Display failing scenario URIs in summary (Julien Biezemans)
+
+#### Documentation, internals and tests
+
+* Ran a gem update (Aslak Hellesøy)
+* Update NPM dependencies (#69) (Aslak Hellesøy)
+* Refactor listener infrastructure (#35, #59, #63) (Julien Biezemans)
+* Extract summary logger from progress formatter (#59, #63) (Julien Biezemans)
+* Store URI on AST elements (Julien Biezemans)
+
+
+
+### [v0.2.15](https://github.com/cucumber/cucumber-js/compare/v0.2.14...v0.2.15)
 
 #### New features
 
@@ -22,7 +67,6 @@
 
 ### [v0.2.14](https://github.com/cucumber/cucumber-js/compare/v0.2.13...v0.2.14)
 
-
 #### New features
 
 * Mention CS support in README (Julien Biezemans)
@@ -35,7 +79,6 @@
 
 
 ### [v0.2.13](https://github.com/cucumber/cucumber-js/compare/v0.2.12...v0.2.13)
-
 
 #### New features
 
