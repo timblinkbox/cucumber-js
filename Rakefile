@@ -10,7 +10,8 @@ namespace :test do
 
   desc "Run the features through Cucumber (Ruby) and Aruba"
   task :rb do
-    sh %{ cucumber -p quiet }
+    sh %{ mkdir test }
+    sh %{ cucumber -p quiet -f junit -o test }
   end
 
   desc "Run the features through Cucumber.js and the specs through Jasmine-node"
