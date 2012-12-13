@@ -239,9 +239,10 @@ describe("Cucumber.Listener.SummaryFormatter", function () {
   });
 
   describe("handleAfterFeaturesEvent()", function () {
-    var callback;
+    var event, callback;
 
     beforeEach(function () {
+      event    = createSpy("event");
       callback = createSpy("callback");
       spyOn(summaryFormatter, 'logSummary');
     });

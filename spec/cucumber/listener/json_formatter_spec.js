@@ -98,7 +98,7 @@ describe("Cucumber.Listener.JsonFormatterWrapper", function () {
   // Handle Scenario
 
   describe("handleBeforeScenarioEvent()", function () {
-    var parentFeatureEvent, scenario, callback;
+    var event, parentFeatureEvent, scenario, callback;
 
     beforeEach(function () {
       feature = createSpyWithStubs("feature", {
@@ -421,7 +421,7 @@ describe("Cucumber.Listener.JsonFormatterWrapper", function () {
   });
 
   describe("handleAfterFeaturesEvent()", function () {
-    var features, callback;
+    var event, features, callback;
 
     beforeEach(function () {
       event    = createSpy("Event");
