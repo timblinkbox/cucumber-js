@@ -89,6 +89,14 @@ var cucumberSteps = function() {
     callback();
   });
 
+  Given(/^the step "([^"]*)" has a mapping failing via a Node-like error construct$/, function(stepName, callback) {
+    this.stepDefinitions += "Given(/^" + stepName + "$/, function(callback) {\
+  world.touchStep(\"" + stepName + "\");\
+  callback(new Error('#fail'));\
+});\n";
+    callback();
+  });
+
   Given(/^the step "([^"]*)" has a pending mapping$/, function(stepName, callback) {
     this.stepDefinitions += "Given(/^" + stepName + "$/, function(callback) {\
   world.touchStep(\"" + stepName + "\");\
@@ -123,6 +131,14 @@ setTimeout(callback.pending, 10);\
   Given(/^the step "([^"]*)" has a passing mapping that receives a data table$/, function(stepName, callback) {
     this.stepDefinitions += "Given(/^" + stepName + "$/, function(dataTable, callback) {\
   world.dataTableLog = dataTable.raw();\
+  callback();\
+});";
+    callback();
+  });
+
+  Given(/^the step "([^"]*)" has a passing mapping that receives a doc string$/, function(stepName, callback) {
+    this.stepDefinitions += "Given(/^" + stepName + "$/, function(docString, callback) {\
+  world.docString = docString;\
   callback();\
 });";
     callback();
@@ -168,6 +184,15 @@ setTimeout(callback.pending, 10);\
     callback();
   });
 
+  Given(/^several features$/, function(callback) {
+    this.features = [
+      ["feature1", "Feature: One\n\n  Scenario:\n"],
+      ["feature2", "Feature: Two\n\n  Scenario:\n"],
+      ["feature3", "Feature: Three\n\n  Scenario:\n"],
+    ];
+    callback();
+  });
+
   When(/^Cucumber executes the scenario$/, function(callback) {
     this.runFeature({}, callback);
   });
@@ -195,6 +220,10 @@ setTimeout(callback.pending, 10);\
 
   When(/^Cucumber runs the feature$/, function(callback) {
     this.runFeature({}, callback);
+  });
+
+  When(/^Cucumber runs the features$/, function(callback) {
+    this.runFeatures({}, callback);
   });
 
   When(/^Cucumber runs the scenario with steps for a calculator$/, function(callback) {
@@ -298,6 +327,11 @@ callback();\
     callback();
   });
 
+  Then(/^all features are run$/, function(callback) {
+    this.assertPassedFeatures();
+    callback();
+  });
+
   Then(/^the failure message "([^"]*)" is output$/, function(message, callback) {
     this.assertFailureMessage(message);
     callback();
@@ -315,11 +349,15 @@ callback();\
     callback();
   });
 
+  Then(/^the received doc string equals the following:$/, function(docString, callback) {
+    this.assertEqual(docString, World.mostRecentInstance.docString);
+    callback();
+  });
+
   this.Then(/^the explicit World object function should have been called$/, function(callback) {
     this.assertTrue(this.explicitWorldFunctionCalled);
     callback();
   });
-
 
   Then(/^the (before|after) hook is fired (?:before|after) the scenario$/, function(hookType, callback) {
     if (hookType == 'before')

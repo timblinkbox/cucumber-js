@@ -65,6 +65,10 @@ module CucumberJsMappings
     append_step_definition(step_name, "setTimeout(function() { throw new Error('#{message}');}, 10);")
   end
 
+  def write_failing_mapping_through_nodejs_callback(step_name)
+    append_step_definition(step_name, "callback(new Error('#fail'));")
+  end
+
   def write_mapping_incrementing_world_variable_by_value(step_name, increment_value)
     append_step_definition(step_name, "this.variable += #{increment_value}; callback();")
   end
@@ -301,6 +305,15 @@ EOF
     check_exact_file_content step_file(pattern), arguments.join("\n")
   end
 
+  def assert_json_output(expected)
+    expected.gsub!(/<current-directory>/, File.join(Dir.pwd, current_dir))
+    expected = JSON(expected).to_s
+    actual   = JSON(all_output)
+    neutralise_error_messages_in_enumerable actual
+    actual   = actual.to_s
+    actual.should == expected
+  end
+
   def failed_output
     "failed"
   end
@@ -331,11 +344,12 @@ EOF
   end
 
   def write_coffee_script_definition_file
+    @mapping_name = "a CoffeeScript mapping"
     append_to_file COFFEE_SCRIPT_DEFINITIONS_FILE, <<-EOF
 fs = require('fs')
 stepDefinitions = () ->
-  this.defineStep(/^a mapping$/, (callback) ->
-    fs.writeFileSync('a_mapping.step', '')
+  this.defineStep(/^#{@mapping_name}$/, (callback) ->
+    fs.writeFileSync('#{step_file(@mapping_name)}', '')
     callback()
   )
 module.exports = stepDefinitions
@@ -343,18 +357,20 @@ EOF
   end
 
   def write_string_based_pattern_mapping
+    @mapping_name = "a mapping + fancy characters"
     append_support_code <<-EOF
-this.defineStep("a mapping", function(callback) {
-  fs.writeFileSync("#{step_file("a mapping")}", "");
+this.defineStep("a mapping + fancy characters", function(callback) {
+  fs.writeFileSync("#{step_file(@mapping_name)}", "");
   callback();
 });
 EOF
   end
 
   def write_string_based_pattern_mapping_with_parameters
+    @mapping_name = "a string-based mapping with parameters"
     append_support_code <<-EOF
 this.defineStep('a mapping with $word_param "$multi_word_param"', function(p1, p2, callback) {
-  fs.writeFileSync("#{step_file("a mapping")}", p1 + "\\n" + p2);
+  fs.writeFileSync("#{step_file(@mapping_name)}", p1 + "\\n" + p2);
   callback();
 });
 EOF
@@ -370,5 +386,22 @@ EOF
   def nth_step_name n
     "step #{n}"
   end
+
+  def neutralise_error_messages_in_enumerable enumerable
+    if enumerable.is_a? Array
+      enumerable.each do |item|
+        neutralise_error_messages_in_enumerable item if item.respond_to? :each
+      end
+    else
+      enumerable.each do |attr, value|
+        if attr == "error_message"
+          enumerable[attr] = "<error-message>"
+        elsif value.respond_to? :each
+          neutralise_error_messages_in_enumerable value
+        end
+      end
+    end
+  end
 end
+
 World(CucumberJsMappings)

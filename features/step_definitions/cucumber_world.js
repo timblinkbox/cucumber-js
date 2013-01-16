@@ -22,13 +22,21 @@ proto.runFeature = function runFeature(options, callback) {
   this.runFeatureWithSupportCodeSource(supportCode, options, callback);
 };
 
+proto.runFeatures = function runFeatures(options, callback) {
+  this.runFeaturesWithSupportCodeSource(this.features, function() {}, options, callback);
+};
+
 proto.runFeatureWithSupportCodeSource = function runFeatureWithSupportCodeSource(supportCode, options, callback) {
+  this.runFeaturesWithSupportCodeSource(this.featureSource, supportCode, options, callback);
+};
+
+proto.runFeaturesWithSupportCodeSource = function runFeaturesWithSupportCodeSource(features, supportCode, options, callback) {
   var world     = this;
   var Cucumber  = require('../../lib/cucumber');
   options = options || {};
   var tags = options['tags'] || [];
 
-  var cucumber  = Cucumber(this.featureSource, supportCode, {tags: tags});
+  var cucumber  = Cucumber(features, supportCode, {tags: tags});
   var formatter = Cucumber.Listener.ProgressFormatter({logToConsole: false});
 
   cucumber.attachListener(formatter);
@@ -56,7 +64,7 @@ proto.runAScenario = function runAScenario(callback) {
 };
 
 proto.runAScenarioCallingMapping = function runAScenarioCallingMapping(callback) {
-  this.addScenario("", "Given a mapping");
+  this.addScenario("", "Given " + this.mappingName);
   this.runFeature({}, callback);
 };
 
@@ -89,15 +97,17 @@ proto.isStepTouched = function isStepTouched(pattern) {
 };
 
 proto.addStringBasedPatternMapping = function addStringBasedPatternMapping() {
-  this.stepDefinitions += "Given('a mapping', function(callback) {\
-  world.logCycleEvent('a mapping');\
+  this.mappingName = "/a string-based mapping with fancy characters |\\ ^*-{(})+[a].?";
+  this.stepDefinitions += "Given('/a string-based mapping with fancy characters |\\\\ ^*-{(})+[a].?', function(callback) {\
+  world.logCycleEvent('/a string-based mapping with fancy characters |\\\\ ^*-{(})+[a].?');\
   callback();\
 });";
 };
 
 proto.addStringBasedPatternMappingWithParameters = function addStringBasedPatternMappingWithParameters() {
+  this.mappingName = "a string-based mapping";
   this.stepDefinitions += "Given('a mapping with $word_param \"$multi_word_param\"', function(p1, p2, callback) {\
-  world.logCycleEvent('a mapping');\
+  world.logCycleEvent('a string-based mapping');\
   world.actualMappingArguments = [p1, p2];\
   callback();\
 });";
@@ -153,6 +163,12 @@ proto.assertPassedFeature = function assertPassedFeature() {
   this.assertSuccess();
 };
 
+proto.assertPassedFeatures = function assertPassedFeatures() {
+  this.assertNoPartialOutput("failed", this.runOutput);
+  this.assertPartialOutput("3 scenarios (3 passed)", this.runOutput);
+  this.assertSuccess();
+};
+
 proto.assertPassedScenario = function assertPassedScenario() {
   this.assertPartialOutput("1 scenario (1 passed)", this.runOutput);
   this.assertSuccess();
@@ -193,7 +209,7 @@ proto.assertSkippedStep = function assertSkippedStep(stepName) {
 };
 
 proto.assertPassedMapping = function assertPassedMapping() {
-  this.assertCycleSequence("a mapping");
+  this.assertCycleSequence(this.mappingName);
 };
 
 proto.assertPassedMappingWithArguments = function assertPassedMappingWithArguments() {

@@ -12,40 +12,124 @@ Cucumber.js is still a work in progress. Here is its current status.
 
 ### Cucumber Technology Compatibility Kit
 
-| Feature                                                                                                                       | Status              |
-|:------------------------------------------------------------------------------------------------------------------------------|:--------------------|
-| [Core](https://github.com/cucumber/cucumber-tck/blob/master/core.feature) (scenarios, steps, mappings)                        | Done                |
-| [Background](https://github.com/cucumber/cucumber-tck/blob/master/background.feature)                                         | Done<sup>1</sup>    |
-| [Calling steps from step defs](https://github.com/cucumber/cucumber-tck/blob/master/calling_steps_from_stepdefs.feature)      | To do               |
-| [Comments](https://github.com/cucumber/cucumber-tck/blob/master/comments.feature)                                             | Done                |
-| [Command-line interface](https://github.com/cucumber/cucumber-tck/blob/master/command_line_interface.feature)                 | Done<sup>1, 2</sup> |
-| [Command-line options](https://github.com/cucumber/cucumber-tck/blob/master/command_line_options.feature)                     | To do<sup>2</sup>   |
-| [Data tables](https://github.com/cucumber/cucumber-tck/blob/master/data_tables.feature)                                       | Done                |
-| [Doc Strings](https://github.com/cucumber/cucumber-tck/blob/master/doc_strings.feature)                                       | Done                |
-| [Failing steps](https://github.com/cucumber/cucumber-tck/blob/master/failing_steps.feature)                                   | Done                |
-| [Hooks](https://github.com/cucumber/cucumber-tck/blob/master/hooks.feature)                                                   | Done                |
-| [I18n](https://github.com/cucumber/cucumber-tck/blob/master/i18n.feature)                                                     | To do               |
-| [JSON formatter](https://github.com/cucumber/cucumber-tck/blob/master/json_formatter.feature)                                 | To do               |
-| [Pretty formatter](https://github.com/cucumber/cucumber-tck/blob/master/pretty_formatter.feature)                             | WIP<sup>2</sup>   |
-| [Scenario outlines and examples](https://github.com/cucumber/cucumber-tck/blob/master/scenario_outlines_and_examples.feature) | To do               |
-| [Stats collector](https://github.com/cucumber/cucumber-tck/blob/master/stats_collector.feature)                               | To do               |
-| [Step argument transforms](https://github.com/cucumber/cucumber-tck/blob/master/step_argument_transforms.feature)             | To do               |
-| [Tags](https://github.com/cucumber/cucumber-tck/blob/master/tags.feature)                                                     | Done                |
-| [Undefined steps](https://github.com/cucumber/cucumber-tck/blob/master/undefined_steps.feature)                               | Done                |
-| [Wire protocol](https://github.com/cucumber/cucumber-tck/blob/master/wire_protocol.feature)                                   | To do               |
-| [World](https://github.com/cucumber/cucumber-tck/blob/master/world.feature)                                                   | Done                |
+<table>
+  <thead>
+    <tr><th>Feature</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/core.feature">Core</a> (scenarios, steps, mappings)</td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/background.feature">Background</a></td>
+      <td>Done<sup>1</sup></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/calling_steps_from_step_defs.feature">Calling steps from step defs</a></td>
+      <td>To do</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/comments.feature">Comments</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/command_line_interface.feature">Command-line interface</a></td>
+      <td>Done<sup>1, 2</sup></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/command_line_options.feature">Command-line options</a></td>
+      <td>Todo<sup>2</sup></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/data_tables.feature">Data tables</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/doc_strings.feature">Doc strings</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/failing_steps.feature">Failing steps</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/hooks.feature">Hooks</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/i18n.feature">I18n</a></td>
+      <td>To do</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/json_formatter.feature">JSON formatter</a></td>
+      <td>WIP<sup>3</sup></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/pretty_formatter.feature">Pretty formatter</a></td>
+      <td>WIP<sup>2</sup></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/scenario_outlines_and_examples.feature">Scenario outlines and examples</a></td>
+      <td>To do</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/stats_collector.feature">Stats collector</a></td>
+      <td>To do</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/step_argument_transforms.feature">Step argument transforms</a></td>
+      <td>To do</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/tags.feature">Tags</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/undefined_steps.feature">Undefined steps</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/wire_protocol.feature">Wire protocol</a></td>
+      <td>To do</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-tck/blob/master/world.feature">World</a></td>
+      <td>Done</td>
+    </tr>
+  </tbody>
+</table>
 
 1. Not certified by [Cucumber TCK](https://github.com/cucumber/cucumber-tck) yet.
 2. Considered for removal from [Cucumber TCK](https://github.com/cucumber/cucumber-tck).
-3. Simple *Around*, *Before* and *After* hooks are available.
+3. Missing 'matches' attributes. Simple wrapper for *Gherkin*'s `JsonFormatter` pending porting of:
+
+  * https://github.com/cucumber/gherkin/blob/master/lib/gherkin/listener/formatter_listener.rb
+  * https://github.com/cucumber/gherkin/blob/master/lib/gherkin/formatter/filter_formatter.rb
+
+  in Gherkin itself.
 
 ### Cucumber.js-specific features
 
-| Feature                                                                                                           | Status           |
-|:------------------------------------------------------------------------------------------------------------------|:-----------------|
-| [Background](https://github.com/cucumber/cucumber-js/blob/master/features/background.feature)                     | Done<sup>1</sup> |
-| [CoffeeScript support](https://github.com/cucumber/cucumber-js/blob/master/features/coffeescript_support.feature) | Done             |
-| [Command-line interface](https://github.com/cucumber/cucumber-js/blob/master/features/cli.feature)                | Done             |
+<table>
+  <thead>
+    <tr><th>Feature</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-js/blob/master/features/background.feature">Background</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-js/blob/master/features/coffeescript_support.feature">CoffeeScript support</a></td>
+      <td>Done</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/cucumber/cucumber-js/blob/master/features/cli.featur">Command-line interface</a></td>
+      <td>Done</td>
+    </tr>
+  </tbody>
+</table>
 
 1. Will be certified by [Cucumber TCK](https://github.com/cucumber/cucumber-tck).
 
@@ -56,7 +140,7 @@ Cucumber.js is still a work in progress. Here is its current status.
 
 Cucumber.js is tested on:
 
-* Node.js 0.6 or 0.7 (see [CI builds](http://travis-ci.org/#!/cucumber/cucumber-js))
+* Node.js 0.6 and 0.8 (see [CI builds](http://travis-ci.org/#!/cucumber/cucumber-js))
 * Google Chrome
 * Firefox
 * Safari
@@ -381,18 +465,3 @@ See [CONTRIBUTE](https://github.com/cucumber/cucumber-js/blob/master/CONTRIBUTE.
 * IRC: [#cucumber](http://webchat.freenode.net?channels=cucumber&uio=d4) on Freenode
 * Google Groups: [cukes](https://groups.google.com/group/cukes)
 * [cukes.info](http://cukes.info)
-
-
-## Release checklist
-
-* Update development status in `README.md`, if relevant
-* Update `History.md`
-* Bump version in `lib/cucumber.js`
-* Bump version in `package.json`
-* Add new contributors to `package.json`, if any
-* Commit those changes as "*Release 0.1.2*" (where *0.1.2* is the actual version, of course)
-* Tag commit as "v0.1.2" with short description of main changes
-* Push to main repo on Github
-* Wait for build to go green
-* Publish to NPM
-* Deploy to cucumber.no.de

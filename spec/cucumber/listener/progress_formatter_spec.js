@@ -255,7 +255,7 @@ describe("Cucumber.Listener.ProgressFormatter", function () {
   });
 
   describe("handleAfterFeaturesEvent()", function () {
-    var features, summaryLogs, callback;
+    var event, features, summaryLogs, callback;
 
     beforeEach(function () {
       event       = createSpy("event");
